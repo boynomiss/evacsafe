@@ -1,0 +1,232 @@
+/* Import Leaflet CSS */
+@import 'leaflet/dist/leaflet.css';
+
+/* Fix Leaflet marker icon paths */
+.leaflet-default-icon-path {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png');
+}
+
+.leaflet-marker-icon {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.leaflet-marker-shadow {
+  background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png');
+}
+
+/* Custom animations */
+@keyframes pulse-location {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* User location marker pulsing animation */
+.user-location-marker {
+  animation: pulse-location 2s ease-in-out infinite;
+}
+
+/* Smooth transitions for hover effects */
+.hover-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-opacity:hover {
+  opacity: 0.8;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Zone info card animations */
+.zone-info-card {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Map legend fade in */
+.map-legend {
+  animation: fade-in 0.5s ease-out;
+}
+
+/* Locate button hover effects */
+.locate-button {
+  transition: all 0.2s ease-in-out;
+}
+
+.locate-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.locate-button:active {
+  transform: scale(0.95);
+}
+
+/* Loading spinner */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+  /* Adjust map container for mobile */
+  .map-container-mobile {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+  
+  /* Mobile-friendly button sizes */
+  .mobile-button {
+    min-height: 44px; /* iOS touch target minimum */
+    min-width: 44px;
+  }
+  
+  /* Mobile zone info card adjustments */
+  .mobile-zone-card {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+  
+  /* Mobile map legend adjustments */
+  .mobile-legend {
+    bottom: 1rem;
+    left: 1rem;
+    max-width: calc(100vw - 2rem);
+  }
+  
+  /* Mobile locate button adjustments */
+  .mobile-locate-button {
+    bottom: 1rem;
+    right: 1rem;
+    width: 48px;
+    height: 48px;
+  }
+  
+  /* Touch-friendly popup adjustments */
+  .leaflet-popup-content {
+    min-width: 200px;
+    max-width: 280px;
+  }
+  
+  /* Mobile header adjustments */
+  .mobile-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .mobile-header h1 {
+    font-size: 1.125rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .tablet-zone-card {
+    max-width: 400px;
+  }
+  
+  .tablet-legend {
+    max-width: 250px;
+  }
+}
+
+/* Desktop adjustments */
+@media (min-width: 1025px) {
+  .desktop-zone-card {
+    max-width: 450px;
+  }
+  
+  .desktop-legend {
+    max-width: 280px;
+  }
+}
+
+/* High DPI display adjustments */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .leaflet-marker-icon {
+    background-image: url('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png');
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .user-location-marker,
+  .loading-spinner,
+  .zone-info-card,
+  .map-legend {
+    animation: none;
+  }
+  
+  .hover-transition,
+  .locate-button {
+    transition: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Dark mode support (if needed) */
+@media (prefers-color-scheme: dark) {
+  .leaflet-popup-content-wrapper {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+  
+  .leaflet-popup-tip {
+    background-color: #1f2937;
+  }
+}
